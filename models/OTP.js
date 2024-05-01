@@ -19,6 +19,7 @@ const OTPSchema = new mongoose.Schema({
 
 
 //a function -> to send emails
+//PRE middleware to send mail before saving otp data to OTP schema
 async function sendVerificationEmail(email, otp) {
     try{
         const mailResponse = await mailSender(email, "Verification Email from StudyNotion", otp);
