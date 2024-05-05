@@ -32,7 +32,6 @@ exports.capturePayment = async (req, res) => {
         }
 
         //user already pay for the same course
-        // here we are coverting this to object id 
         const uid = new mongoose.Types.ObjectId(userId);
         if(course.studentsEnrolled.includes(uid)) {
             return res.status(200).json({
@@ -97,7 +96,6 @@ exports.verifySignature = async (req, res) => {
     const signature = req.headers["x-razorpay-signature"];
 
     const shasum =  crypto.createHmac("sha256", webhookSecret);
-    //update the payload wirth the final value 
     shasum.update(JSON.stringify(req.body));
     const digest = shasum.digest("hex");
 

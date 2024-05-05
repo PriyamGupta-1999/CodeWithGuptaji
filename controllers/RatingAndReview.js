@@ -76,12 +76,15 @@ exports.getAverageRating = async (req, res) => {
 
             const result = await RatingAndReview.aggregate([
                 {
+                    //here we will map the courses which have equal course id 
                     $match:{
                         course: new mongoose.Types.ObjectId(courseId),
                     },
                 },
                 {
+
                     $group:{
+                        //if we have added id's here we can add them and if we want all we write null here
                         _id:null,
                         averageRating: { $avg: "$rating"},
                     }
@@ -123,6 +126,7 @@ exports.getAllRating = async (req, res) => {
                                     .sort({rating: "desc"})
                                     .populate({
                                         path:"user",
+                                        //other than firstName:true we can use below method
                                         select:"firstName lastName email image",
                                     })
                                     .populate({
