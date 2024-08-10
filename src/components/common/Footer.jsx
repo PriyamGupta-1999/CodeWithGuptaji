@@ -172,7 +172,8 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="text-center">© 2024 CodeWithGuptaJi. All rights reserved.
+          <div className="text-center">© 2024 CodeWithGuptaJi. All rights reserved. 
+          
 </div>
         </div>
       </div>
